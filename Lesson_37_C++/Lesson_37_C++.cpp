@@ -1,6 +1,7 @@
 ﻿#include "MyQueue.h"
 #include "AudioCD.h"
 #include <vector>
+#include <Windows.h>
 
 int main()
 {
@@ -30,5 +31,19 @@ int main()
 		}
 		file.close();
 	}
-	cout << "Size: " << allMusic.size() << endl;
+	/*cout << "Size: " << allMusic.size() << endl;*/
+
+	myQueue::Queue < AudioCD> MyPlayer;
+	MyPlayer.push_back(allMusic[3]);
+	MyPlayer.push_back(allMusic[1]);
+	MyPlayer.push_back(allMusic[3]);
+	MyPlayer.push_back(allMusic[6]);
+	cout << "--------------------------\n";
+	while (!MyPlayer.isEmpty())
+	{
+		MyPlayer.first().show();
+		Sleep(2000);
+		system("cls");
+		MyPlayer.pop_front();
+	}
 }
